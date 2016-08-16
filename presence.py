@@ -31,48 +31,48 @@ def whosHome(i):
 			output = subprocess.check_output("sudo arp-scan -l", shell=True)
 			# If a listed device address is present print and stream
 			if address[i] in output:
-		        print(occupant[i] + "'s device is connected to your network")
-		        if presentSent[i] == 0:
-		        	# Stream that device is present
-		        	streamer.log(occupant[i],":house_with_garden:")
-		        	streamer.flush()
-		        	print(occupant[i] + " present streamed")
-		        	# Reset counters so another stream isn't sent if the device
-		        	# is still present
-		        	presentSent[i] = 1
-		        	notPresentSent[i] = 0
-		        	counter[i] = 0
-		        else:
-		        	# If a stream's already been sent, just wait for 5 minutes
-		        	counter[i] = 0
-		        	sleep(300)
-		    # If a listed device address is not present, print and stream
-		    else:
-		    	print(occupant[i] + "'s device is not present")
-		    	# Only consider a device offline if it's counter has reached 30
-		    	# This is the same as 15 minutes passing
-		    	if counter[i] == 30 or firstRun[i] == 1:
-		    		firstRun[i] = 0
-			        if notPresentSent[i] == 0:
-			        	# Stream that device is not present
-			        	streamer.log(occupant[i],":no_entry_sign::house_with_garden:")
-			        	streamer.flush()
-			        	print(occupant[i] + " not present streamed")
-			        	# Reset counters so another stream isn't sent if the device
-		        		# is still present
-			        	notPresentSent[i] = 1
-			        	presentSent[i] = 0
-			        	counter[i] = 0
-			        else:
-			        	# If a stream's already been sent, wait 30 seconds
-			        	counter[i] = 0
-			        	sleep(30)
-			    # Count how many 30 second intervals have happened since the device 
-			    # disappeared from the network
-			    else:
-			    	counter[i] = counter[i] + 1
-			    	print(occupant[i] + "'s counter at " + str(counter[i]))
-			    	sleep(30)
+				print(occupant[i] + "'s device is connected to your network")
+				if presentSent[i] == 0:
+					# Stream that device is present
+					streamer.log(occupant[i],":house_with_garden:")
+					streamer.flush()
+					print(occupant[i] + " present streamed")
+					# Reset counters so another stream isn't sent if the device
+					# is still present
+					presentSent[i] = 1
+					notPresentSent[i] = 0
+					counter[i] = 0
+				else:
+					# If a stream's already been sent, just wait for 5 minutes
+					counter[i] = 0
+					sleep(300)
+			# If a listed device address is not present, print and stream
+			else:
+				print(occupant[i] + "'s device is not present")
+				# Only consider a device offline if it's counter has reached 30
+				# This is the same as 15 minutes passing
+				if counter[i] == 30 or firstRun[i] == 1:
+					firstRun[i] = 0
+					if notPresentSent[i] == 0:
+						# Stream that device is not present
+						streamer.log(occupant[i],":no_entry_sign::house_with_garden:")
+						streamer.flush()
+						print(occupant[i] + " not present streamed")
+						# Reset counters so another stream isn't sent if the device
+						# is still present
+						notPresentSent[i] = 1
+						presentSent[i] = 0
+						counter[i] = 0
+					else:
+						# If a stream's already been sent, wait 30 seconds
+						counter[i] = 0
+						sleep(30)
+				# Count how many 30 second intervals have happened since the device 
+				# disappeared from the network
+				else:
+					counter[i] = counter[i] + 1
+					print(occupant[i] + "'s counter at " + str(counter[i]))
+					sleep(30)
 	# Return on a Keyboard Interrupt
 	except KeyboardInterrupt:
 		return
