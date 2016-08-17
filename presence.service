@@ -1,0 +1,13 @@
+[Unit]
+Description=start presence.py to check for presence
+Wants=network-online.target
+After=network-online.target
+After=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/python /home/chip/presence.py
+
+[Install]
+WantedBy=multi-user.target
