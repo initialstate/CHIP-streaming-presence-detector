@@ -9,4 +9,4 @@ Lots of cool boards for makers and developers have been coming out, and the [C.H
 
 You read that right.
 
-So, this WiFi-based presence detector will only cost you $9...[read more](https://github.com/initialstate/CHIP-streaming-presence-detector/wiki)
+So, this WiFi-based presence detector will only cost you $9. [Read more...](https://github.com/initialstate/CHIP-streaming-presence-detector/wiki)
