@@ -1,7 +1,7 @@
-#Internet Connected & Sensor Free Presence Detector with the C.H.I.P.
+# Internet Connected & Sensor Free Presence Detector with the C.H.I.P.
 ---
 
-#Introduction
+# Introduction
 
 ![chipmain](https://cloud.githubusercontent.com/assets/10930201/17716137/14f6b67a-63cd-11e6-9195-b26e08c1c704.jpg)
 
